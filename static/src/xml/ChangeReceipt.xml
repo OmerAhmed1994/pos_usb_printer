@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ChangeReceipt" owl="1">
+        <div class="pos-receipt">
+            <div class="pos-receipt-order-data">
+                <t t-esc="changes.name" />
+            </div>
+            <div class="pos-receipt-order-data">
+                <span>Time: </span>
+                <t t-esc='changes.time.hours' />
+                :
+                <t t-esc='changes.time.minutes' />
+            </div>
+            <div class="pos-receipt-order-data">
+                <h2>
+                    <t t-esc="changes.printer" />
+                </h2>
+            </div>
+            <t t-if="changes.floor || changes.table">
+                <br />
+                <div class="pos-receipt-title">
+                    <t t-esc="changes.floor" />
+                    /
+                    <t t-esc="changes.table" />
+                </div>
+            </t>
+            <t t-if="changes.cancelled.length > 0">
+                <div class="pos-receipt-title">
+                    CANCELLED
+                </div>
+                <br />
+                <table style="width: 100%;">
+                    <tr style="border:2px solid #000000;">
+                        <th style="padding: 7px 5px 7px 5px;">Name</th>
+                        <th style="padding: 7px 5px 7px 5px;">Qty</th>
+                        <th style="padding: 7px 5px 7px 5px;">Price</th>
+                        <th style="padding: 7px 5px 7px 5px;">Total</th>
+                    </tr>
+                    <tbody>
+                        <t t-foreach="changes.cancelled" t-as="change">
+                            <tr style="border-top:2px solid #000000;border-right:2px solid #000000;border-left:2px solid #000000;">
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <span t-esc="change.name_wrapped[0]" />
+                                    <t t-foreach="change.name_wrapped.slice(1)" t-as="wrapped_line">
+                                        <span t-esc="wrapped_line" />
+                                    </t>
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.qty" />
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.price" />
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.qty * change.price" />
+                                </td>
+                            </tr>
+                            <tr style="border-bottom:2px solid #000000;border-right:2px solid #000000;border-left:2px solid #000000;">
+                                <td style="padding: 7px 5px 7px 5px;" colspan="4">
+                                    <t t-esc="change.note" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <br />
+                <br />
+            </t>
+            <t t-if="changes.new.length > 0">
+                <div class="pos-receipt-title">
+                    NEW
+                </div>
+                <br />
+                <table style="width: 100%;">
+                    <tr style="border:2px solid #000000;">
+                        <th style="padding: 7px 5px 7px 5px;">Name</th>
+                        <th style="padding: 7px 5px 7px 5px;">Qty</th>
+                        <th style="padding: 7px 5px 7px 5px;">Price</th>
+                        <th style="padding: 7px 5px 7px 5px;">Total</th>
+                    </tr>
+                    <tbody>
+                        <t t-foreach="changes.new" t-as="change">
+                            <tr style="border-top:2px solid #000000;border-right:2px solid #000000;border-left:2px solid #000000;">
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <span t-esc="change.name_wrapped[0]" />
+                                    <t t-foreach="change.name_wrapped.slice(1)" t-as="wrapped_line">
+                                        <span t-esc="wrapped_line" />
+                                    </t>
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.qty" />
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.price" />
+                                </td>
+                                <td style="padding: 7px 5px 7px 5px;">
+                                    <t t-esc="change.qty * change.price" />
+                                </td>
+                            </tr>
+                            <tr style="border-bottom:2px solid #000000;border-right:2px solid #000000;border-left:2px solid #000000;">
+                                <td style="padding: 7px 5px 7px 5px;" colspan="4">
+                                    <t t-esc="change.note" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <br />
+                <br />
+            </t>
+        </div>
+    </t>
+
+</templates>

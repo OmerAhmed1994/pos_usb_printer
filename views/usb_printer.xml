@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_usb_printer_form" model="ir.ui.view">
+        <field name="name">Order Printer</field>
+        <field name="model">usb.printer</field>
+        <field name="arch" type="xml">
+            <form string="POS Printer">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group string="Categories">
+                        <field name="product_categories_ids" nolabel="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_usb_printer" model="ir.ui.view">
+        <field name="name">Order Printers</field>
+        <field name="model">usb.printer</field>
+        <field name="arch" type="xml">
+            <tree string="usb Order Printers">
+                <field name="name" />
+                <field name="product_categories_ids" widget="many2many_tags" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_usb_printer_form" model="ir.actions.act_window">
+        <field name="name">USB Order Printers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">usb.printer</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new usb order printer
+              </p>
+            <p>
+                Order Printers are used by usb and bars to print the
+                order updates in the kitchen/bar when the waiter updates the order.
+              </p>
+            <p>
+                Each Order Printer has an IP Address that defines the IoT Box/Hardware
+                Proxy where the printer can be found, and a list of product categories.
+                An Order Printer will only print updates for products belonging to one of
+                its categories.
+              </p>
+        </field>
+    </record>
+
+    <record id="pos_config_view_form_inherit_restaurant" model="ir.ui.view">
+        <field name="name">pos.config.view.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="pos_restaurant.pos_config_view_form_inherit_restaurant" />
+        <field name="arch" type="xml">
+            <div id="is_order_printer" position="after">
+                <div class="col-12 col-lg-6 o_setting_box" id="is_order_usb_printer" attrs="{'invisible': [('module_pos_restaurant', '=', False)]}">
+                    <div class="o_setting_left_pane">
+                        <field name="is_order_usb_printer" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="is_order_usb_printer" />
+                        <span class="fa fa-lg fa-cutlery" title="For bars and restaurants" role="img" aria-label="For bars and restaurants" />
+                        <div class="text-muted">
+                        Print orders at the kitchen, at the bar, etc.
+                    </div>
+                        <div class="content-group" attrs="{'invisible': [('is_order_usb_printer', '=', False)]}">
+                            <div class="mt16">
+                                <label string="Printers" for="printer_usb_ids" class="o_light_label" />
+                                <field name="printer_usb_ids" widget="many2many_tags" />
+                            </div>
+                            <div>
+                                <button name="%(pos_usb_printer.action_usb_printer_form)d" icon="fa-arrow-right" type="action" string="Printers" class="btn-link" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <menuitem 
+        id="menu_usb_printer_all" 
+        parent="point_of_sale.menu_point_config_product" 
+        action="action_usb_printer_form" 
+        sequence="15" 
+    />
+</odoo>

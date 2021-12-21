@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    
+
+    <t t-name="ReceiptScreen" t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension" owl="1">
+        <div class="pos-receipt-container" position="inside">
+            <t t-if="env.pos.config.is_order_usb_printer" t-foreach="props.printers_changes" t-as="changes">
+                <p style="clear: both !important;page-break-before:always !important;"></p>
+                <ChangeReceipt currentOrder="currentOrder" changes="changes" />
+            </t>
+        </div>
+    </t>
+</templates>

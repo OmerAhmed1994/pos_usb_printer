@@ -1,0 +1,192 @@
+
+/* override styles when printing */
+/* @media print {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+
+  .font-bold {
+    font-weight: normal;
+  }
+  .pos .pos-receipt-container > div {
+    font-size: 12px !important;
+  }
+
+  .pos-receipt .pos-receipt-amount {
+    font-size: 100%;
+    padding-left: 0px;
+  }
+} */
+
+.font-bold {
+  font-size: larger;
+  font-weight: bold;
+}
+
+
+
+
+.pos-receipt-order-data {
+  text-align: center !important;
+}
+
+
+.text-align-right {
+  padding-right: 5px;
+}
+
+.receipt_table{
+  width: 100%;
+}
+
+.receipt_table thead tr{
+  background-color: #ecebeb;
+}
+
+
+.receipt_table thead tr th{
+  padding: 2px 5px 2px 5px;
+}
+
+.receipt_table tr td{
+  padding: 2px 5px 2px 5px;
+}
+
+
+.pos-receipt .pos-receipt-contact {
+  text-align: initial !important;
+  /* padding: 5px; */
+}
+
+.pos-receipt .company-info{
+  text-align: center !important;
+}
+
+
+.pos-receipt .pos-receipt-contact table{
+  width: 100%;
+}
+
+.pos .pos-receipt-container > div {
+  box-sizing: border-box;
+}
+/* 
+.pos-receipt{
+  width: 80mm !important;
+  max-width: 80mm !important;
+} */
+
+.pos-receipt .pos-receipt-amount {
+  font-size: 100%;
+  padding-left: 0px;
+}
+
+.pos-receipt .pos-receipt-order-data {
+    text-align: center;
+    font-size: 100%;
+}
+
+/* 
+#qrcode{
+  display: flex;
+  justify-content: center;
+} */
+
+.qrcode img {
+  width: 50%;
+  display: block;
+  margin: 20px auto;
+}
+
+
+.pos .pos-disc-font {
+    font-size: 11px;
+    font-style: italic;
+    color: #1f1b1b;
+}
+
+h1 , h2, h3, h4, h5, h6{
+  margin: 1px;
+}
+
+.pos .pos-receipt-container > div {
+  font-size: 12px !important;
+}
+
+.pos .pos-receipt-amount {
+  clear: right;
+  padding-left:0px;
+}
+
+.pos-receipt .pos-receipt-logo {
+  width: 100%;
+}
+
+
+.pos-receipt { 
+  page-break-after: always; 
+}
+
+.pos .disabled-mode, .pos .disabled-mode:hover {
+    background: #c7c7c7;
+    color: #a5a1a1;
+    cursor: not-allowed;
+}
+
+.qrcode{
+  text-align: center ;
+}
+
+.pos .product{
+  font-weight: bold;
+}
+
+
+.popup-note-selection input {
+  min-height: 0px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.checkbox-content{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.checkbox-div{
+  width: 50%;
+  height: 20px;
+  margin: 8px 0px 8px;
+  text-align: start;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.checkbox-div label{
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.popup-note-selection textarea {
+  margin: 0px;
+  width: 90%;
+  height: 50px;
+  resize: none;
+}
+
+/* 
+.pos-receipt-container {
+  display: block !important;
+  float:none !important;
+  overflow: visible !important;
+  border: none !important;
+}
+
+.receipt-screen .default-view {
+  display: block;
+  overflow: visible !important;
+  border: none !important;
+} */
