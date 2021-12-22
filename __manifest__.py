@@ -12,10 +12,19 @@
     'depends': ['pos_restaurant'],
     'data': [
         'security/ir.model.access.csv',
-        'views/assets.xml',
         'views/usb_printer.xml',
     ],
-    'qweb': ['static/src/xml/*.xml'],
+    'assets': {
+        'point_of_sale.assets': [
+            '/pos_usb_printer/static/src/js/models.js',
+            '/pos_usb_printer/static/src/js/ChangeReceipt.js',
+            '/pos_usb_printer/static/src/js/PaymentScreen.js',
+        ],
+        'web.assets_qweb': [
+            'pos_usb_printer/static/src/xml/*.xml',
+        ],
+    },
+    # 'qweb': ['static/src/xml/*.xml'],
     'installable': True,
     'auto_install': False,
 }
